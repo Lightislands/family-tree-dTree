@@ -4,7 +4,7 @@ import itemController from './model.js';
 let UIController = (() => {
 
     let DOM = {
-        chOneStart: '#ch-1-start',
+        containet: '#graph',
         switchAutoManual: '#switchAuto',
         hideSettings: '.set-off'
     };
@@ -17,92 +17,8 @@ let UIController = (() => {
 
 
 
-
-	
-	
-		var treeData = [{
-		  "name": "Niclas Superlongsurname",
-		  "class": "man",
-		  "textClass": "emphasis",
-		  "marriages": [{
-			"spouse": {
-			  "name": "Iliana",
-			  "class": "woman",
-			  "extra": {
-				"nickname": "Illi"
-			  }
-			},
-			"children": [{
-			  "name": "James",
-			  "class": "man",
-			  "marriages": [{
-				"spouse": {
-				  "name": "Alexandra",
-				  "class": "woman"
-				},
-				"children": [{
-				  "name": "Eric",
-				  "class": "man",
-				  "marriages": [{
-					"spouse": {
-					  "name": "Eva",
-					  "class": "woman"
-					}
-				  }]
-				}, {
-				  "name": "Jane",
-				  "class": "woman"
-				}, {
-				  "name": "Jasper",
-				  "class": "man",
-				  
-				  
-				  
-				  
-				"marriages": [{
-				"spouse": {
-				  "name": "Jaspers Fife",
-				  "class": "woman"
-				},
-				"children": [{
-				  "name": "Eric",
-				  "class": "man"
-				}, {
-				  "name": "Jane",
-				  "class": "woman"
-				}, {
-				  "name": "Jasper",
-				  "class": "man"
-				}, {
-				  "name": "Emma",
-				  "class": "woman"
-				}]
-			  }]
-			  
-			  
-			  
-				  
-				  
-				  
-				}, {
-				  "name": "Emma",
-				  "class": "woman"
-				}, {
-				  "name": "Julia",
-				  "class": "woman"
-				}, {
-				  "name": "Jessica",
-				  "class": "woman"
-				}]
-			  }]
-			}]
-		  }]
-		}];
-
-
-
-		dTree.init(treeData, {
-		  target: "#graph",
+		dTree.init(itemController.storage.getData(), {
+		  target: DOM.container,
 		  debug: true,
 		  height: 800,
 		  width: 1200,

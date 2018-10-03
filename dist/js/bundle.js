@@ -6320,12 +6320,82 @@ __webpack_require__.r(__webpack_exports__);
 // Start model.js
 var itemController = function () {
   var storage = {
-    dynamic: [],
+    treeData: [{
+      "name": "Niclas Superlongsurname",
+      "class": "man",
+      "textClass": "emphasis",
+      "marriages": [{
+        "spouse": {
+          "name": "Iliana",
+          "class": "woman",
+          "extra": {
+            "nickname": "Illi"
+          }
+        },
+        "children": [{
+          "name": "James",
+          "class": "man",
+          "marriages": [{
+            "spouse": {
+              "name": "Alexandra",
+              "class": "woman"
+            },
+            "children": [{
+              "name": "Eric",
+              "class": "man",
+              "marriages": [{
+                "spouse": {
+                  "name": "Eva",
+                  "class": "woman"
+                }
+              }]
+            }, {
+              "name": "Jane",
+              "class": "woman"
+            }, {
+              "name": "Jasper",
+              "class": "man",
+              "marriages": [{
+                "spouse": {
+                  "name": "Jaspers Fife",
+                  "class": "woman"
+                },
+                "children": [{
+                  "name": "Eric",
+                  "class": "man"
+                }, {
+                  "name": "Jane",
+                  "class": "woman"
+                }, {
+                  "name": "Jasper",
+                  "class": "man"
+                }, {
+                  "name": "Emma",
+                  "class": "woman"
+                }]
+              }]
+            }, {
+              "name": "Emma",
+              "class": "woman"
+            }, {
+              "name": "Julia",
+              "class": "woman"
+            }, {
+              "name": "Jessica",
+              "class": "woman"
+            }]
+          }]
+        }]
+      }]
+    }],
     setData: function setData() {},
-    getData: function getData(i) {}
+    getData: function getData() {
+      return this.treeData;
+    }
   };
   return {
-    storage: storage
+    storage: storage // treeData: treeData
+
   };
 }();
 
@@ -6347,7 +6417,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var UIController = function () {
   var DOM = {
-    chOneStart: '#ch-1-start',
+    containet: '#graph',
     switchAutoManual: '#switchAuto',
     hideSettings: '.set-off'
   };
@@ -6356,76 +6426,8 @@ var UIController = function () {
     console.log("buildItemList");
   }
 
-  var treeData = [{
-    "name": "Niclas Superlongsurname",
-    "class": "man",
-    "textClass": "emphasis",
-    "marriages": [{
-      "spouse": {
-        "name": "Iliana",
-        "class": "woman",
-        "extra": {
-          "nickname": "Illi"
-        }
-      },
-      "children": [{
-        "name": "James",
-        "class": "man",
-        "marriages": [{
-          "spouse": {
-            "name": "Alexandra",
-            "class": "woman"
-          },
-          "children": [{
-            "name": "Eric",
-            "class": "man",
-            "marriages": [{
-              "spouse": {
-                "name": "Eva",
-                "class": "woman"
-              }
-            }]
-          }, {
-            "name": "Jane",
-            "class": "woman"
-          }, {
-            "name": "Jasper",
-            "class": "man",
-            "marriages": [{
-              "spouse": {
-                "name": "Jaspers Fife",
-                "class": "woman"
-              },
-              "children": [{
-                "name": "Eric",
-                "class": "man"
-              }, {
-                "name": "Jane",
-                "class": "woman"
-              }, {
-                "name": "Jasper",
-                "class": "man"
-              }, {
-                "name": "Emma",
-                "class": "woman"
-              }]
-            }]
-          }, {
-            "name": "Emma",
-            "class": "woman"
-          }, {
-            "name": "Julia",
-            "class": "woman"
-          }, {
-            "name": "Jessica",
-            "class": "woman"
-          }]
-        }]
-      }]
-    }]
-  }];
-  dTree.init(treeData, {
-    target: "#graph",
+  dTree.init(_model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.getData(), {
+    target: DOM.container,
     debug: true,
     height: 800,
     width: 1200,
