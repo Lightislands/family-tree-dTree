@@ -1,0 +1,60 @@
+.container {
+  max-width: 1200px;
+}
+@media screen and (max-width: 1460px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+
+
+.head {
+  min-height: 100px;
+  border-bottom: 2px solid $color-one;
+}
+
+.model {
+  max-width: 50%;
+  min-height: 200px;
+  float: left;
+
+  > div {
+    margin-top: 20%;
+  }
+}
+
+.set, .manual {
+  width: 50%;
+  padding-top: 60px;
+  float: right;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+
+
+@media screen and (max-width: 1128px) {
+  .model {
+    max-width: 50%;
+    > div {
+      margin-top: 40%;
+    }
+  }
+  .set {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 828px) {
+  .model {
+    max-width: 100%;
+    > div {
+      margin-top: 0;
+    }
+  }
+  .set {
+    width: 100%;
+  }
+}

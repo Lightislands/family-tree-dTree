@@ -1,0 +1,37 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family Tree</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <link rel="stylesheet" href="css/style.bundle.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+-->
+
+<% var data = {
+  title: "Some Title",
+  author: "Author Name"
+}; %>
+<%= _.template(require('./../includes/header.html'))(data) %>
+
+
+  <h1>Demo</h1>
+  <div id="graph"></div>
+
+<%= _.template(require('./../includes/footer.html'))(data) %>
+
+
+
+<!--
+<script src="js/bundle.js"></script>
+</body>
+-->
+
+</html>
