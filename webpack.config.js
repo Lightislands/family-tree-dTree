@@ -82,6 +82,10 @@ module.exports = {
       allChunks: true
     }),
     new CopyWebpackPlugin([
+      {
+        from: './src/fonts',
+        to: './fonts'
+      },
 	  {
         from: './src/favicon',
         to: './favicon'

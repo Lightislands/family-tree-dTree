@@ -16,15 +16,14 @@ $text-small: 0.8rem;
 @import "fonts.scss";
 
 
-
-#graph {
-  svg {
-    display: block;
-    width:  90%;
-    margin: 0 auto;
-    border: 1px solid $border-gray;
+.container {
+  #graph {
+    svg {
+      border: 1px solid $border-gray;
+    }
   }
 }
+
 
 .hide {display: none;}
 //============================================================= HEADER

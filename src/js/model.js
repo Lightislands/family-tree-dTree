@@ -90,14 +90,12 @@ let modelController = (() => {
 
         },
         addNew: function() {
-            alert("ss")
+
             this.treeData.push({
                 "name": "Niclas1",
-                "class": "man1",
-                "textClass": "1"});
+                "class": "man",
+                "textClass": "emphasis"});
             console.log(this.treeData);
-            UIController.drawTree();
-
         },
         getData: function(){
             return this.treeData;

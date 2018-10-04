@@ -128,7 +128,8 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _materialize_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./materialize.min.js */ "./src/js/materialize.min.js");
 /* harmony import */ var _materialize_min_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_materialize_min_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ui_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui.js */ "./src/js/ui.js");
+/* harmony import */ var _model_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model.js */ "./src/js/model.js");
+/* harmony import */ var _ui_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui.js */ "./src/js/ui.js");
  // import jQuery from 'jquery';
 // import jQuery from './jquery-3.3.1.min.js';
 // window.jQuery = jQuery
@@ -141,16 +142,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var DOM = _ui_js__WEBPACK_IMPORTED_MODULE_2__["default"].DOM();
+/* =========================== Event Listeners =========================== */
+// Events
+
+var setupEventListeners = function setupEventListeners() {
+  $('foreignObject').on('click', function () {
+    // Somehow console.log the ID of the circle clicked on (if any).
+    // console.log("Clicked ID: " + d3.event.target.id);
+    console.log("------- this ------");
+    console.log(this.id);
+    var id = this.id;
+    $('foreignObject').removeClass('selected');
+    $("#" + id).addClass('selected');
+  });
+  $(DOM.addNew).click(function () {
+    _model_js__WEBPACK_IMPORTED_MODULE_1__["default"].storage.addNew();
+    $(DOM.container).empty();
+    _ui_js__WEBPACK_IMPORTED_MODULE_2__["default"].drawTree();
+  });
+};
+
 var controller = function () {
   var displayItems = function displayItems() {
     // alert("sss")
-    _ui_js__WEBPACK_IMPORTED_MODULE_1__["default"].drawTree();
+    _ui_js__WEBPACK_IMPORTED_MODULE_2__["default"].drawTree();
   };
 
   return {
     init: function init() {
       console.log('Init');
       displayItems();
+      setupEventListeners();
     }
   };
 }();
@@ -6392,14 +6415,12 @@ var modelController = function () {
     }],
     setData: function setData() {},
     addNew: function addNew() {
-      alert("ss");
       this.treeData.push({
         "name": "Niclas1",
-        "class": "man1",
-        "textClass": "1"
+        "class": "man",
+        "textClass": "emphasis"
       });
       console.log(this.treeData);
-      _ui__WEBPACK_IMPORTED_MODULE_0__["default"].drawTree();
     },
     getData: function getData() {
       return this.treeData;
@@ -6428,10 +6449,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UIController = function () {
-  var DOM = {
-    containet: '#graph',
-    switchAutoManual: '#switchAuto',
-    hideSettings: '.set-off'
+  var _DOM = {
+    container: '#graph',
+    addNew: '#add-new'
   };
 
   function buildItemList() {
@@ -6441,15 +6461,14 @@ var UIController = function () {
   function drawTree() {
     console.log("Draw tree");
     dTree.init(_model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.getData(), {
-      target: DOM.container,
+      target: _DOM.container,
       debug: true,
       height: 800,
       width: 1200,
       callbacks: {
-        nodeClick: function nodeClick(name, extra) {
-          console.log(name);
-          console.log("------- events ------");
-          console.log(d3.event);
+        nodeClick: function nodeClick(name, extra) {// console.log(name);
+          // console.log("------- events ------")
+          // console.log(d3.event.target)
         },
         textRenderer: function textRenderer(name, extra, textClass) {
           if (extra && extra.nickname) name = name + " (" + extra.nickname + ")";
@@ -6460,23 +6479,11 @@ var UIController = function () {
     console.log("Tree is built");
   }
 
-  $('foreignObject').on('click', function () {
-    // Somehow console.log the ID of the circle clicked on (if any).
-    //console.log("Clicked ID: " + d3.event.target.id);
-    console.log("------- this ------");
-    console.log(this.id);
-    var id = this.id;
-    $('foreignObject').removeClass('selected');
-    $("#" + id).addClass('selected');
-  });
-  $('#add-new').click(function () {
-    _model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.addNew();
-  });
   return {
     buildItemList: buildItemList,
     drawTree: drawTree,
-    getDOMstrings: function getDOMstrings() {
-      return DOM;
+    DOM: function DOM() {
+      return _DOM;
     }
   };
 }();

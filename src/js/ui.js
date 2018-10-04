@@ -4,9 +4,8 @@ import modelController from './model.js';
 let UIController = (() => {
 
     let DOM = {
-        containet: '#graph',
-        switchAutoManual: '#switchAuto',
-        hideSettings: '.set-off'
+        container: '#graph',
+		addNew: '#add-new'
     };
 
 
@@ -19,15 +18,16 @@ let UIController = (() => {
 	function drawTree(){
 		console.log("Draw tree")
 		dTree.init(modelController.storage.getData(), {
+
 			target: DOM.container,
 			debug: true,
 			height: 800,
 			width: 1200,
 			callbacks: {
 			  nodeClick: function(name, extra) {
-				console.log(name);
-				console.log("------- events ------")
-				console.log(d3.event)
+				// console.log(name);
+				// console.log("------- events ------")
+				// console.log(d3.event.target)
 			  },
 			  textRenderer: function(name, extra, textClass) {
 				  if (extra && extra.nickname)
@@ -35,6 +35,7 @@ let UIController = (() => {
 				  return "<p align='center' class='" + textClass + "'>" + name + "</p>";
 			  }
 			}
+
 		});
 		console.log("Tree is built")
     }
@@ -42,25 +43,11 @@ let UIController = (() => {
 
 
 
-		$('foreignObject').on('click', function() {
-			// Somehow console.log the ID of the circle clicked on (if any).
-			//console.log("Clicked ID: " + d3.event.target.id);
-			console.log("------- this ------")
-			console.log(this.id)
-			let id = this.id;
-			$('foreignObject').removeClass('selected');
-			$("#"+id).addClass('selected');
-		});
-
-		$('#add-new').click(function(){
-			modelController.storage.addNew()
-		})
-
 
     return {
 		buildItemList: buildItemList,
 		drawTree: drawTree,
-        getDOMstrings: function(){
+        DOM: function(){
             return DOM;
         }
     };
