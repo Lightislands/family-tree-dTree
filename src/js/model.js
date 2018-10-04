@@ -1,10 +1,13 @@
+import UIController from "./ui";
+
 // Start model.js
 
-let itemController = (() => {
+let modelController = (() => {
 
 
     let storage = {
-        treeData: [{
+        treeData: [
+        {
         "name": "Niclas Superlongsurname",
         "class": "man",
         "textClass": "emphasis",
@@ -86,6 +89,16 @@ let itemController = (() => {
         setData: function() {
 
         },
+        addNew: function() {
+            alert("ss")
+            this.treeData.push({
+                "name": "Niclas1",
+                "class": "man1",
+                "textClass": "1"});
+            console.log(this.treeData);
+            UIController.drawTree();
+
+        },
         getData: function(){
             return this.treeData;
         }
@@ -99,4 +112,4 @@ let itemController = (() => {
 
 })();
 
-export default itemController;
+export default modelController;

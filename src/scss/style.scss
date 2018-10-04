@@ -63,3 +63,16 @@ p {
   padding: 0;
   margin: 0;
 }
+
+
+
+.selected {
+  border: 3px solid #f00;
+}
+
+//------------------------ Controls --------------------------
+#add-new {
+  position: absolute;
+    right: 60px;
+    bottom: 0px;
+}

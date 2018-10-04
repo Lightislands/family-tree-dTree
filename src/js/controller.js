@@ -17,7 +17,7 @@ import UIController from './ui.js';
 let controller = (() => {
     let displayItems =()=> {
         // alert("sss")
-        UIController.buildItemList();
+        UIController.drawTree();
     };
 
     return {

@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 var controller = function () {
   var displayItems = function displayItems() {
     // alert("sss")
-    _ui_js__WEBPACK_IMPORTED_MODULE_1__["default"].buildItemList();
+    _ui_js__WEBPACK_IMPORTED_MODULE_1__["default"].drawTree();
   };
 
   return {
@@ -6317,8 +6317,10 @@ M.anime = function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// Start model.js
-var itemController = function () {
+/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui */ "./src/js/ui.js");
+ // Start model.js
+
+var modelController = function () {
   var storage = {
     treeData: [{
       "name": "Niclas Superlongsurname",
@@ -6389,6 +6391,16 @@ var itemController = function () {
       }]
     }],
     setData: function setData() {},
+    addNew: function addNew() {
+      alert("ss");
+      this.treeData.push({
+        "name": "Niclas1",
+        "class": "man1",
+        "textClass": "1"
+      });
+      console.log(this.treeData);
+      _ui__WEBPACK_IMPORTED_MODULE_0__["default"].drawTree();
+    },
     getData: function getData() {
       return this.treeData;
     }
@@ -6399,7 +6411,7 @@ var itemController = function () {
   };
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (itemController);
+/* harmony default export */ __webpack_exports__["default"] = (modelController);
 
 /***/ }),
 
@@ -6426,23 +6438,43 @@ var UIController = function () {
     console.log("buildItemList");
   }
 
-  dTree.init(_model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.getData(), {
-    target: DOM.container,
-    debug: true,
-    height: 800,
-    width: 1200,
-    callbacks: {
-      nodeClick: function nodeClick(name, extra) {
-        console.log(name);
-      },
-      textRenderer: function textRenderer(name, extra, textClass) {
-        if (extra && extra.nickname) name = name + " (" + extra.nickname + ")";
-        return "<p align='center' class='" + textClass + "'>" + name + "</p>";
+  function drawTree() {
+    console.log("Draw tree");
+    dTree.init(_model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.getData(), {
+      target: DOM.container,
+      debug: true,
+      height: 800,
+      width: 1200,
+      callbacks: {
+        nodeClick: function nodeClick(name, extra) {
+          console.log(name);
+          console.log("------- events ------");
+          console.log(d3.event);
+        },
+        textRenderer: function textRenderer(name, extra, textClass) {
+          if (extra && extra.nickname) name = name + " (" + extra.nickname + ")";
+          return "<p align='center' class='" + textClass + "'>" + name + "</p>";
+        }
       }
-    }
+    });
+    console.log("Tree is built");
+  }
+
+  $('foreignObject').on('click', function () {
+    // Somehow console.log the ID of the circle clicked on (if any).
+    //console.log("Clicked ID: " + d3.event.target.id);
+    console.log("------- this ------");
+    console.log(this.id);
+    var id = this.id;
+    $('foreignObject').removeClass('selected');
+    $("#" + id).addClass('selected');
+  });
+  $('#add-new').click(function () {
+    _model_js__WEBPACK_IMPORTED_MODULE_0__["default"].storage.addNew();
   });
   return {
     buildItemList: buildItemList,
+    drawTree: drawTree,
     getDOMstrings: function getDOMstrings() {
       return DOM;
     }

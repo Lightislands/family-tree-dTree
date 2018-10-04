@@ -27,3 +27,9 @@ npm run start
 Dev:
 npm run dev
 
+
+----------- Troubleshoot
+
+Error: ENOENT: no such file or directory, scandir 'C:\Working\my-app\node-sass\vendor'
+Solution - reinstall sass loader
+npm install sass-loader node-sass webpack --save-dev
