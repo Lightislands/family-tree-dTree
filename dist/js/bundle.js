@@ -144,7 +144,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var DOM = _ui_js__WEBPACK_IMPORTED_MODULE_2__["default"].DOM();
 /* =========================== Event Listeners =========================== */
-// Events
 
 var setupEventListeners = function setupEventListeners() {
   $('foreignObject').on('click', function () {

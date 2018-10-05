@@ -17,7 +17,7 @@ import UIController from './ui.js';
 let DOM = UIController.DOM();
 
 /* =========================== Event Listeners =========================== */
-// Events
+
 let setupEventListeners = () => {
 
     $('foreignObject').on('click', function() {
