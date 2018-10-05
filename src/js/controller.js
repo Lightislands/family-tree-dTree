@@ -33,12 +33,16 @@ let setupEventListeners = () => {
         $("#"+id).addClass('selected');
     });
 
-    $(DOM.addNew).click(function(){
-        modelController.storage.addNew();
-        $(DOM.container).empty();
-        UIController.drawTree();
-    })
+    // $(DOM.addNew).click(function(){
+    //     modelController.storage.addNew();
+    //     $(DOM.container).empty();
+    //     UIController.drawTree();
+    // })
 
+    // Init Modals
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
 };
 
 

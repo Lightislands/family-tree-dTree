@@ -22,12 +22,12 @@
 <%= _.template(require('./../includes/header.html'))(data) %>
 
 
-  <h1>Demo</h1>
   <div class="container">
     <div id="graph"></div>
-    <a class="btn-floating btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></a>
+    <button data-target="add-new-modal" class="btn-floating modal-trigger btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></button>
   </div>
 
+  <%= _.template(require('./../includes/modal.html'))(data) %>
 
 
 

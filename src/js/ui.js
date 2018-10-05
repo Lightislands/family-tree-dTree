@@ -17,12 +17,12 @@ let UIController = (() => {
 
 	function drawTree(){
 		console.log("Draw tree")
-		dTree.init(modelController.storage.getData(), {
 
+		dTree.init(modelController.storage.getData(), {
 			target: DOM.container,
 			debug: true,
-			height: 800,
-			width: 1200,
+			height: $( window ).height() - 20,
+			width: $( window ).width(),
 			callbacks: {
 			  nodeClick: function(name, extra) {
 				// console.log(name);

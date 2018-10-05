@@ -12,6 +12,28 @@
   transform: rotate($degree);
 }
 
+// @mixin breakpoint ($device){
+//   @media(max-width: ($device)){
+//     @content;
+//   }
+// }
+
+// ------------- Responsive (mobile first)
+// Tablet and more
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin desctop {
+  @media (min-width: $desctop) {
+    @content;
+  }
+}
+
+
+
+
 //@mixin material-icons-btn() {
 //  .material-icons;
 //  margin-top: 15px;

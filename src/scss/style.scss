@@ -1,14 +1,4 @@
-$color-link: #1d1d1d; /* a */
-$color-one: #26a69a;  /* footer border */
-$color-two: #f9a217;
-$color-three: #54abd6;
-$color-four: #53c3d1;
-$border-gray: #ccc;
-$text-gray: #9d9d9d;
-$text-small: 0.8rem;
-
-//#e0e0e0
-
+@import "variables.scss";
 @import "normalize.scss";
 @import "materialize-min";
 @import "mixins.scss";
@@ -16,17 +6,10 @@ $text-small: 0.8rem;
 @import "fonts.scss";
 
 
-.container {
-  #graph {
-    svg {
-      border: 1px solid $border-gray;
-    }
-  }
-}
-
-
 .hide {display: none;}
 //============================================================= HEADER
+
+
 
 body {
   font: 10px sans-serif;
@@ -63,8 +46,6 @@ p {
   margin: 0;
 }
 
-
-
 .selected {
   border: 3px solid #f00;
 }
@@ -75,3 +56,18 @@ p {
     right: 60px;
     bottom: 0px;
 }
+
+.modal {
+  max-width: 600px;
+}
+
+/*
+    Responsive (mobile first)
+    XS: 480px | SM: 768px | MD: 992px | LG: 1200px
+--------------------------------------------------
+*/
+
+/* Only mobile */
+// @media(max-width: ($breakpoint_lg - 1)){
+
+// }

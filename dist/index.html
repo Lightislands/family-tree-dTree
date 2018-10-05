@@ -42,12 +42,20 @@
   <body>
 
 
-  <h1>Demo</h1>
   <div class="container">
     <div id="graph"></div>
-    <a class="btn-floating btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></a>
+    <button data-target="add-new-modal" class="btn-floating modal-trigger btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></button>
   </div>
 
+    <div id="add-new-modal" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="material-icons">close</i></a>
+    </div>
+  </div>
 
 
 
