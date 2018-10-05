@@ -3,7 +3,7 @@
 forked from - https://jsfiddle.net/tpde0cer/344/
 
 
-======= SASS, ES6, lodash 
+======= SASS, ES6, LoDash
 
 -------- Install packages:
 npm install

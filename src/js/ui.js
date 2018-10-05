@@ -5,7 +5,8 @@ let UIController = (() => {
 
     let DOM = {
         container: '#graph',
-		addNew: '#add-new'
+		addNew: '#add-new',
+		addNewModalForm: '#add-new-modal form'
     };
 
 
@@ -39,9 +40,6 @@ let UIController = (() => {
 		});
 		console.log("Tree is built")
     }
-
-
-
 
 
     return {

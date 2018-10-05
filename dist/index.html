@@ -41,20 +41,49 @@
   </head>
   <body>
 
-
-  <div class="container">
+  <div class="tree-container">
     <div id="graph"></div>
     <button data-target="add-new-modal" class="btn-floating modal-trigger btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></button>
   </div>
 
+
+
+<script>
+
+</script>
+<style>
+  body{font-family:Verdana;}
+  #Serialized{color:#fa4b2a}
+</style>
+
+<div id="Serialized"></div>
+
+
+<!-- Add new modal -->
     <div id="add-new-modal" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="material-icons">close</i></a>
-    </div>
+      <div class="modal-content">
+          <h4>Add New</h4>
+          <div class="row">
+              <form class="col s12">
+                  <div class="row">
+                      <div class="input-field col s6">
+                          <input id="first_name" type="text" class="validate" name="name">
+                          <label for="first_name">First Name</label>
+                      </div>
+                      <!--<div class="input-field col s6">-->
+                          <!--<input id="last_name" type="text" class="validate" name="LastName">-->
+                          <!--<label for="last_name">Last Name</label>-->
+                      <!--</div>-->
+                  </div>
+                  <button class="btn waves-effect waves-light modal-close" type="submit" name="action">Add person
+                      <i class="material-icons right">add</i>
+                  </button>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <a href="#" class="modal-close waves-effect waves-green btn-flat"><i class="material-icons">close</i></a>
+          </div>
+      </div>
   </div>
 
 

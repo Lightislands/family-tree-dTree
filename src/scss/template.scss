@@ -1,14 +1,21 @@
-.container {
+.tree-container {
   width: 100%;
 
   #graph {
     border: 1px solid #f00;
     display: block;
     margin: 0 auto;
+
+
+
+    @include tablet {
+      border: 2px solid #0f0;
+    }
+    @include desctop {
+      border: 2px solid #00f;
+    }
+
     svg {
-      // margin-left: -100px;
-      display: block;
-      margin: 0 auto;
       border: 1px solid $border-gray;
 
 
@@ -16,10 +23,9 @@
       //   border: 2px solid #0f0;
       // }
 
-      @include tablet {
-        border: 2px solid #0f0;
-      }
-   
+
+
+
     }
   }
 }

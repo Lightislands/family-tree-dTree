@@ -89,12 +89,9 @@ let modelController = (() => {
         setData: function() {
 
         },
-        addNew: function() {
+        addNew: function(addNewData) {
 
-            this.treeData.push({
-                "name": "Niclas1",
-                "class": "man",
-                "textClass": "emphasis"});
+            this.treeData.push(addNewData);
             console.log(this.treeData);
         },
         getData: function(){

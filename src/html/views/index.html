@@ -17,17 +17,30 @@
 
 <% var data = {
   title: "Some Title",
-  author: "Author Name"
+  author: "Author Name",
 }; %>
 <%= _.template(require('./../includes/header.html'))(data) %>
 
-
-  <div class="container">
+  <div class="tree-container">
     <div id="graph"></div>
     <button data-target="add-new-modal" class="btn-floating modal-trigger btn-large waves-effect waves-light red" id="add-new"><i class="material-icons">add</i></button>
   </div>
 
-  <%= _.template(require('./../includes/modal.html'))(data) %>
+
+
+<script>
+
+</script>
+<style>
+  body{font-family:Verdana;}
+  #Serialized{color:#fa4b2a}
+</style>
+
+<div id="Serialized"></div>
+
+
+<!-- Add new modal -->
+  <%= _.template(require('./../includes/add-new-modal.html'))(data) %>
 
 
 
