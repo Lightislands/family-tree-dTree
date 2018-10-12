@@ -35,8 +35,8 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
 	<script src="https://cdn.rawgit.com/ErikGartner/dTree/master/dist/dTree.min.js"></script>
-	
-	
+
+
     <title>Some Title</title>
   </head>
   <body>
@@ -47,10 +47,6 @@
   </div>
 
 
-
-<script>
-
-</script>
 <style>
   body{font-family:Verdana;}
   #Serialized{color:#fa4b2a}
@@ -70,11 +66,44 @@
                           <input id="first_name" type="text" class="validate" name="name">
                           <label for="first_name">First Name</label>
                       </div>
-                      <!--<div class="input-field col s6">-->
-                          <!--<input id="last_name" type="text" class="validate" name="LastName">-->
-                          <!--<label for="last_name">Last Name</label>-->
-                      <!--</div>-->
+                      <div class="input-field col s6">
+                          <input id="last_name" type="text" class="validate" name="lastName">
+                          <label for="last_name">Last Name</label>
+                      </div>
                   </div>
+
+                  <div class="row">
+                      <div class="input-field col s6">
+                          <p>
+                              <label>
+                                  <input name="gender" class="with-gap" type="radio" value="man" checked />
+                                  <span>Man</span>
+                              </label>
+                          </p>
+                          <p>
+                              <label>
+                                  <input name="gender" class="with-gap" type="radio" value="woman" />
+                                  <span>Woman</span>
+                              </label>
+                          </p>
+                      </div>
+                      <div class="input-field col s6">
+                          <input id="maiden_name" type="text" name="maidenName">
+                          <label for="maiden_name">Maiden Name</label>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="input-field col s6">
+                          <input id="dates" type="text" name="dates">
+                          <label for="dates">Dates</label>
+                      </div>
+                      <div class="input-field col s6">
+                          <input id="photoLink" type="text" name="photoLink">
+                          <label for="photoLink">Link to photo</label>
+                      </div>
+                  </div>
+
                   <button class="btn waves-effect waves-light modal-close" type="submit" name="action">Add person
                       <i class="material-icons right">add</i>
                   </button>

@@ -8,7 +8,7 @@ let modelController = (() => {
     let storage = {
         treeData: [
         {
-        "name": "Niclas Superlongsurname",
+        "name": "Niclas Superlongsurname Niclas SuperlongsurnameNiclas Superlongsurname",
         "class": "man",
         "textClass": "emphasis",
         "marriages": [{
@@ -16,7 +16,9 @@ let modelController = (() => {
                 "name": "Iliana",
                 "class": "woman",
                 "extra": {
-                    "nickname": "Illi"
+                    "maidenName": "Illi",
+                    "photoLink": "https://thumbs.img-sprzedajemy.pl/1000x901c/13/39/03/portret-na-zamowienie-olowek-ze-zdjecia-prezent-warszawa-483647228.jpg",
+                    "dates": "1956"
                 }
             },
             "children": [{
@@ -101,7 +103,7 @@ let modelController = (() => {
 
 
     return {
-        storage: storage,
+        storage: storage
         // treeData: treeData
     };
 

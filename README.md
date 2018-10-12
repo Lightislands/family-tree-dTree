@@ -1,6 +1,9 @@
 # FamilyTree d3
 
-forked from - https://jsfiddle.net/tpde0cer/344/
+forked from
+- https://jsfiddle.net/tpde0cer/344/
+- https://github.com/ErikGartner/dTree
+- https://treehouse.gartner.io/ErikGartner/58e58be650453b6d49d7
 
 
 ======= SASS, ES6, LoDash

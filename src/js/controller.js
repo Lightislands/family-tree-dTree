@@ -52,17 +52,20 @@ let setupEventListeners = () => {
     $(DOM.addNewModalForm).on( "submit", function( event ) {
         event.preventDefault();
         let addNewData = {};
+        let formatedData = {
+            extra: {}
+        };
         $(this).serializeArray().forEach(function (item, i, arr) {
             addNewData[item.name] = item.value;
         });
 
-        addNewData.class = "man";
-        addNewData.textClass = "emphasis";
-
-
-        console.log(addNewData);
-
-        modelController.storage.addNew(addNewData); // send formData
+        formatedData.name = addNewData.name +" "+addNewData.lastName;
+        formatedData.class = addNewData.gender;
+        addNewData.maidenName ? formatedData.extra.maidenName = addNewData.maidenName : '';
+        addNewData.dates ? formatedData.extra.dates = addNewData.dates : '';
+        addNewData.photoLink ? formatedData.extra.photoLink = addNewData.photoLink: '';
+        
+        modelController.storage.addNew(formatedData); // send formData
         $(DOM.container).empty();
         UIController.drawTree();
     });
