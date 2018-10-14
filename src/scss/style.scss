@@ -6,7 +6,7 @@
 @import "fonts.scss";
 
 
-.hide {display: none;}
+.hidden {display: none;}
 //============================================================= HEADER
 
 
@@ -41,14 +41,6 @@ body {
   font-style: italic;
 }
 
-//p {
-//  padding: 0;
-//  margin: 0;
-//}
-
-.selected {
-  border: 3px solid #f00;
-}
 
 //------------------------ Controls --------------------------
 #add-new {
@@ -61,7 +53,7 @@ body {
   max-width: 600px;
 }
 
-//------------------------ Node --------------------------
+//------------------------ Node template --------------------------
 .man, .woman {
   display: flex;
   align-items: center;
@@ -84,6 +76,35 @@ body {
   }
 }
 
+//------------------------ Node link point --------------------------
+.link-points {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: none;
+  border: 1px solid #f00;
+}
+.top-point {
+  top: -10px;
+  left: 50%;
+}
+.right-point {
+  right: -10px;
+}
+.bottom-point {
+  bottom: -10px;
+  left: 50%;
+}
+.left-point {
+  left: -10px;
+}
+.selected {
+  //display: block;
+  border: 2px solid #f00;
+}
+.visible {
+  display: block;
+}
 /*
     Responsive (mobile first)
     XS: 480px | SM: 768px | MD: 992px | LG: 1200px

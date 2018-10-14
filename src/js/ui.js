@@ -6,7 +6,14 @@ let UIController = (() => {
     let DOM = {
         container: '#graph',
 		addNew: '#add-new',
-		addNewModalForm: '#add-new-modal form'
+		addNewModalForm: '#add-new-modal form',
+		points: 'foreignObject .link-points',
+		linkPointsClass: '.link-points',
+		linkPoints: 'link-points',
+		topPoint: 'top-point', // without "."
+		rightPoint: 'right-point',
+		bottomPoint: 'bottom-point',
+		leftPoint: 'left-point'
     };
 
 
@@ -37,9 +44,48 @@ let UIController = (() => {
 				// },
 
 			  nodeClick: function(name, extra) {
-				// console.log(name);
-				// console.log("------- events ------")
-				// console.log(d3.event.target)
+
+				  let target = $(d3.event.target);
+				  let id = target.closest('foreignObject').attr('id'); //this.id;
+
+				  if($(target[0]).hasClass(DOM.linkPoints)){
+					  pointsHandler();								// Click on point
+				  }else{
+					  markSelectedNode(); 							// Click on Node
+				  }
+
+				  function markSelectedNode(){
+					  // Mark selected Node
+					  if(modelController.connections.nodeA.length) { 		// Second node click - Show points
+console.log("Second")
+						  $('#'+id+' '+DOM.linkPointsClass).addClass('visible');
+					  }else {												// First Node clicked - Add border
+console.log("First")
+						  $('#' + id).addClass('selected');
+						  modelController.connections.firstNodeClicked = true; // ?????? do I need it ?????
+						  modelController.buildConnection(id, null);
+					  }
+				  }
+
+				  function pointsHandler(){
+					  // Points event handlers
+					  if($(target[0]).hasClass(DOM.topPoint)){
+console.log("------Top Point of " + id);
+						  modelController.buildConnection(id, DOM.topPoint);
+					  }
+					  if($(target[0]).hasClass(DOM.rightPoint)){
+						  console.log("------Right Point of " + id);
+						  modelController.buildConnection(id, DOM.rightPoint);
+					  }
+					  if($(target[0]).hasClass(DOM.bottomPoint)){
+						  console.log("------Bottom Point of " + id);
+						  modelController.buildConnection(id, DOM.bottomPoint);
+					  }
+					  if($(target[0]).hasClass(DOM.leftPoint)){
+						  console.log("------Left Point of " + id);
+						  modelController.buildConnection(id, DOM.leftPoint);
+					  }
+				  }
 			  },
 			  textRenderer: function(name, extra, textClass) {
 				  let photo;
@@ -52,7 +98,6 @@ let UIController = (() => {
 				  }	else {
 					  photo = `<img src="img/result-user-avatar.png" />`;
 				  }
-
 				  if(extra && extra.dates){
 					  datesBlock = `<p class="dates">${extra.dates}</p>`;
 				  }
@@ -62,7 +107,12 @@ let UIController = (() => {
 					<div>
 						<p class="${textClass}">${name}</p>
 						${datesBlock}
-					</div>`;
+					</div>
+					<div class="link-points ${DOM.topPoint}"></div>
+					<div class="link-points ${DOM.rightPoint}"></div>
+					<div class="link-points ${DOM.bottomPoint}"></div>
+					<div class="link-points ${DOM.leftPoint}"></div>
+					`;
 			  }
 			},
 			nodeWidth: 200

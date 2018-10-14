@@ -14,66 +14,56 @@ import materialize from './materialize.min.js';
 import modelController from './model.js';
 import UIController from './ui.js';
 
-let DOM = UIController.DOM();
 
-/* =========================== Event Listeners =========================== */
-
-
-let setupEventListeners = () => {
-    $('foreignObject').on('click', function() {
-        // Somehow console.log the ID of the circle clicked on (if any).
-        // console.log("Clicked ID: " + d3.event.target.id);
-
-        console.log("------- this ------")
-        console.log(this.id)
-
-        let id = this.id;
-        $('foreignObject').removeClass('selected');
-        $("#"+id).addClass('selected');
-    });
-
-    // Init Modals
-    $(document).ready(function(){
-        $('.modal').modal();
-    });
-    //
-    // $(DOM.addNewSubmit).click(function(){
-    //     modelController.storage.addNew(); // send formData
-    //     $(DOM.container).empty();
-    //     UIController.drawTree();
-    // });
-
-    // $(DOM.addNewSubmit).click(function(event){
-    //     console.log("-------");
-    //     event.preventDefault();
-    //     console.log( $("#add-new-modal").serialize() );
-    // });
-
-    $(DOM.addNewModalForm).on( "submit", function( event ) {
-        event.preventDefault();
-        let addNewData = {};
-        let formatedData = {
-            extra: {}
-        };
-        $(this).serializeArray().forEach(function (item, i, arr) {
-            addNewData[item.name] = item.value;
-        });
-
-        formatedData.name = addNewData.name +" "+addNewData.lastName;
-        formatedData.class = addNewData.gender;
-        addNewData.maidenName ? formatedData.extra.maidenName = addNewData.maidenName : '';
-        addNewData.dates ? formatedData.extra.dates = addNewData.dates : '';
-        addNewData.photoLink ? formatedData.extra.photoLink = addNewData.photoLink: '';
-        
-        modelController.storage.addNew(formatedData); // send formData
-        $(DOM.container).empty();
-        UIController.drawTree();
-    });
-};
 
 
 
 let controller = (() => {
+
+    let DOM = UIController.DOM();
+
+    /* =========================== Event Listeners =========================== */
+
+
+    let setupEventListeners = () => {
+        
+        // $('foreignObject').on('click', function() {
+        //     // Somehow console.log the ID of the circle clicked on (if any).
+        //     // console.log("Clicked ID: " + d3.event.target.id);
+        //
+        //     console.log("------- this ------")
+        //     console.log(this.id)
+        //
+        //     let id = this.id;
+        //     $('foreignObject .link-points').removeClass('selected');
+        //     $('#'+id +' .link-points').addClass('selected');
+        // });
+
+        // --------------- Remove link-points ------------------
+        $(window).click(function(e){
+            if(e.target.tagName.toUpperCase() == 'SVG'){
+                $(DOM.points).removeClass('visible');
+                $('foreignObject').removeClass('selected');
+            }
+        });
+
+        // --------------- Init Modals
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+        // --------------- Add New ------------------
+
+        $(DOM.addNewModalForm).on( "submit", function( event ) {
+            event.preventDefault();
+            let formatedData = modelController.buildNewItem(this);
+            modelController.storage.addNew(formatedData); // send formData
+            $(DOM.container).empty();
+            UIController.drawTree();
+        });
+    };
+
+
     let displayItems =()=> {
         // alert("sss")
         UIController.drawTree();
