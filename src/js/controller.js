@@ -42,8 +42,7 @@ let controller = (() => {
         // --------------- Remove link-points ------------------
         $(window).click(function(e){
             if(e.target.tagName.toUpperCase() == 'SVG'){
-                $(DOM.points).removeClass('visible');
-                $('foreignObject').removeClass('selected');
+                modelController.connections.resetConnectionBuilding();
             }
         });
 

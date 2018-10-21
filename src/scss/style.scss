@@ -54,7 +54,7 @@ body {
 }
 
 //------------------------ Node template --------------------------
-.man, .woman {
+.man > div, .woman > div {
   display: flex;
   align-items: center;
   text-align: center;
@@ -71,7 +71,7 @@ body {
     }
   }
   .nodeText, .emphasis {
-    width: 160px;
+    width: 155px;
     padding: 5px 10px;
   }
 }
