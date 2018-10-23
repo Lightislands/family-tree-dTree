@@ -85,11 +85,7 @@ let modelController = (() => {
                                 "extra": {"nodeId": "1231"}
                             }]
                         }]
-
-
-
-
-
+                        
 
                     }, {
                         "name": "Emma",
@@ -171,9 +167,7 @@ console.log("First")
     let connections = {
         nodeA: {},
         nodeB: {},
-        //firstNodeClicked: false, // ?????
-        //allNodesClicked: false, // ??????
-
+        
         // Reset nodes selection data
         clearNodes: function(){
             this.nodeA = {};
@@ -181,33 +175,10 @@ console.log("First")
             this.allNodesClicked = false;
 console.log("clearNodes - Cleared")
         },
-
-        /*getNodes: function(nodeId, pointType){
-            if ("id" in this.nodeA){ // Node A already clicked, current node is B
-                this.nodeB.id = nodeId;
-                this.nodeB.pointType = pointType;
-                //this.allNodesClicked = true; // Two nodes clicked
-            }else{
-                this.nodeA.id = nodeId;
-                this.nodeA.pointType = pointType;
-            }
-        },*/
-
-        /*getTypes: function(){
-            let pointA = this.nodeA.pointType;
-            let pointB = this.nodeB.pointType;
-            if(pointA === DOM.topPoint && pointB === DOM.bottomPoint){
-                console.log("Child to parent");
-            }else if(pointA === DOM.topPoint && pointB === DOM.bottomPoint){
-
-            }else {
-                console.log("Wrong sequence")
-            }
-        },*/
-
+        
         resetConnectionBuilding: function(){
             $(DOM.points).removeClass('visible');
-            $('foreignObject').removeClass('selected');
+            $('foreignObject > div > div').removeClass('selected');
             connections.clearNodes();
         }
 
@@ -226,31 +197,22 @@ console.log("clearNodes - Cleared")
              let nodeB = connections.nodeB;
 
              if(nodeB.pointType == DOM.topPoint){
-                 alert("TOP handler")
+console.log("Top handler");
+                 // 1. ----- Add item "B" as a parent to item "A" 
              }
              if(nodeB.pointType == DOM.rightPoint){
-                 alert("RIGHT handler")
+console.log("Right handler");
+                 // 1. ----- Add item "A" as a "Spouse" to item "B"
              }
              if(nodeB.pointType == DOM.bottomPoint){
-                 console.log("Bottom handler");
+console.log("Bottom handler");
 
+// Traverse deep nested objects and edit them
+// https://github.com/Lightislands/obj-traverse
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  FIX IT
-                 // Create new filtered data
-                 // console.log(storage.treeData)
-
-                 // let filtered = storage.treeData = $.grep(storage.treeData, function(data, index) {
-                 //    return data.extra.nodeId !== nodeB.id; // All excluded 2nd item
-                 // });
-
-                 // storage.treeData.forEach(function (value) {
-                 //     console.log(value);
-                 // });
-
-                 console.log("FILTERED")
-
+                 // 1. ----- Remove item "A" from data
                  function customFilter(object){
-                     if(object.hasOwnProperty('nodeId') && object["nodeId"]==12315)
+                     if(object.hasOwnProperty('nodeId') && object["nodeId"]==12315) // Replace to item "A" - nodeA.id
                          return object;
 
                      for(var i=0;i<Object.keys(object).length;i++){
@@ -260,21 +222,20 @@ console.log("clearNodes - Cleared")
                                  return o;
                          }
                      }
-
                      return null;
                  }
 
                  var result = customFilter(storage.treeData);
-                 console.log(result);
+console.log(result);
+
+console.log(nodeA.id);
+console.log(nodeB.id);
+
+                 // 2. ----- Add item "A" as a child to item "B"
 
 
-                 // console.log(nodeA.id)
-                 // console.log(nodeB.id)
-
-
-
-                 // Update Storage with filtered Item (Remove item A)
-                 // storage.treeData = filtered;
+                 // 3. ----- Update Storage with filtered Item
+                 // storage.treeData = result;
                  // console.log(storage.treeData)
 
                  // Rebuild tree
@@ -292,23 +253,6 @@ console.log("clearNodes - Cleared")
              // Do connection work in Storage
              connections.resetConnectionBuilding();
          }
-
-        // connections.getNodes(nodeId, pointType);
-        //
-        // if("id" in connections.nodeA){
-        //     // Clicked Node is "B"
-        //     // Removing unclicked points
-        //     alert("AAA")
-        //     $('#'+nodeId+' .top-point').addClass('hidden');
-        //
-        // }
-
-
-        // if(connections.allNodesClicked){
-        //     console.log("All nodes Clicked ++++ ")
-        //     connections.getTypes();
-        //     connections.clearNodes();
-        // }
     }
 
     return {

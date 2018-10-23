@@ -1,22 +1,9 @@
 'use strict';
-// import jQuery from 'jquery';
-// import jQuery from './jquery-3.3.1.min.js';
-
-// window.jQuery = jQuery
-// console.log(window.jQuery);
-//
-// import $ from 'jquery';
-// window.jQuery = $;
-// window.$ = $;
 
 import materialize from './materialize.min.js';
 
 import modelController from './model.js';
 import UIController from './ui.js';
-
-
-
-
 
 let controller = (() => {
 
@@ -27,18 +14,6 @@ let controller = (() => {
 
     let setupEventListeners = () => {
         
-        // $('foreignObject').on('click', function() {
-        //     // Somehow console.log the ID of the circle clicked on (if any).
-        //     // console.log("Clicked ID: " + d3.event.target.id);
-        //
-        //     console.log("------- this ------")
-        //     console.log(this.id)
-        //
-        //     let id = this.id;
-        //     $('foreignObject .link-points').removeClass('selected');
-        //     $('#'+id +' .link-points').addClass('selected');
-        // });
-
         // --------------- Remove link-points ------------------
         $(window).click(function(e){
             if(e.target.tagName.toUpperCase() == 'SVG'){
@@ -64,7 +39,6 @@ let controller = (() => {
 
 
     let displayItems =()=> {
-        // alert("sss")
         UIController.drawTree();
     };
 

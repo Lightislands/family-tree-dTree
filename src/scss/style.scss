@@ -26,13 +26,13 @@ body {
 }
 
 .man {
-  background-color: lightblue;
   border-style: solid;
   border-width: 1px;
+  background-color: #fff;
 }
 
 .woman {
-  background-color: pink;
+  background-color: #fff;
   border-style: solid;
   border-width: 1px;
 }
@@ -46,7 +46,7 @@ body {
 #add-new {
   position: absolute;
     right: 60px;
-    bottom: 0px;
+    bottom: 0;
 }
 
 .modal {
@@ -74,6 +74,13 @@ body {
     width: 155px;
     padding: 5px 10px;
   }
+}
+
+.man .photo {
+  border-right: 4px solid lightblue;
+}
+.woman .photo {
+  border-right: 4px solid pink;
 }
 
 //------------------------ Node link point --------------------------
@@ -105,11 +112,6 @@ body {
 .visible {
   display: block;
 }
-/*
-    Responsive (mobile first)
-    XS: 480px | SM: 768px | MD: 992px | LG: 1200px
---------------------------------------------------
-*/
 
 /* Only mobile */
 // @media(max-width: ($breakpoint_lg - 1)){
